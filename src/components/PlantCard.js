@@ -28,6 +28,7 @@ function PlantCard( { plant, onUpdateSoldOut } ) {
       <img src={image} alt={name} />
       <h4>{name}</h4>
       <p>Price: {price}</p>
+      <input type="text" value={price} />
       {/* //add ternary on click i guess? */}
       {!isSoldOut ? (
         <button onClick={handleSoldOutCheck} className="primary">In Stock</button>

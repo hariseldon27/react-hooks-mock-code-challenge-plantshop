@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NewPlantForm() {
+function NewPlantForm( { onUpdatePlantList } ) {
   const [formData, setFormData] = useState({
     name: "",
     image: "url",
@@ -19,7 +19,7 @@ function NewPlantForm() {
     const newPlantToAdd = {
       name: formData.name,
       image: formData.image,
-      likes: formData.price
+      price: formData.price
     }
     fetch("http://localhost:6001/plants", {
       method: "POST",
@@ -27,7 +27,7 @@ function NewPlantForm() {
       body: JSON.stringify(newPlantToAdd),
     })
     .then((resp) => resp.json())
-    .then((newlyAddedPlant) => console.log(newlyAddedPlant)
+    .then((newlyAddedPlant) => onUpdatePlantList(newlyAddedPlant)
     )}
 
   return (

@@ -12,11 +12,14 @@ function PlantPage() {
     .then((plantData) => setPlantList(plantData))
   },[])
 
+  function updatePlantList(newlyAddedPlant) {
+    setPlantList([...plantList, newlyAddedPlant])
+  }
 
 
   return (
     <main>
-      <NewPlantForm />
+      <NewPlantForm onUpdatePlantList={updatePlantList}/>
       <Search />
       <PlantList plantsToShow={plantList} />
     </main>

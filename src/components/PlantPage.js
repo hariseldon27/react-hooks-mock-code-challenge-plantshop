@@ -14,14 +14,28 @@ function PlantPage() {
 
   function updatePlantList(newlyAddedPlant) {
     setPlantList([...plantList, newlyAddedPlant])
+    
   }
+
+  function updateSoldOutPlants(updatedPlant) {
+      const updatedSoldOutPlants = plantList.map((plant) => {
+        if(plant.id === updatedPlant.id) {
+          return updatedPlant;
+        } else {
+          return plant
+        }
+      });
+      //then we set all the items in state with the new array
+      setPlantList(updatedSoldOutPlants)
+    }
+  
 
 
   return (
     <main>
       <NewPlantForm onUpdatePlantList={updatePlantList}/>
       <Search />
-      <PlantList plantsToShow={plantList} />
+      <PlantList plantsToShow={plantList} onUpdateSoldOut={updateSoldOutPlants}/>
     </main>
   );
 }
